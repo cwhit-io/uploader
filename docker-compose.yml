@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  uploader:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount host folder into container uploads dir. Set HOST_UPLOAD_DIR in
+      # your environment before running compose to use a custom host path.
+      - "${HOST_UPLOAD_DIR:-./uploads}:/app/uploads"
+    environment:
+      - UPLOAD_DIR=/app/uploads
